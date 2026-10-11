@@ -8,7 +8,8 @@ jobs:
       - run: unzip WeCastPlus-project.zip
       - uses: actions/setup-java@v4
         with: {distribution: temurin, java-version: 17}
-      - uses: android-actions/setup-android@v3
+      - name: Setujui lisensi Android SDK
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
       - uses: gradle/actions/setup-gradle@v4
         with: {gradle-version: 8.7}
       - run: cd WeCastPlus && gradle assembleDebug --no-daemon
